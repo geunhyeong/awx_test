@@ -1,0 +1,11 @@
+---
+- hosts: all
+  remote_user: root
+  tasks:
+    - name: Install vsftpd server
+      yum: name=vsftpd state=latest
+      notify:
+        - restart vsftpd
+handlers:
+    - name: restart vsftpd
+      service: name=vsftpd state=restarted
