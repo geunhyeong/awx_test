@@ -1,0 +1,9 @@
+---
+- hosts: all
+  tasks:
+  - name: Create file with contents
+    copy:
+      dest: "{{ FILE_PATH }}"
+      content: |
+        line 1
+        line 2
