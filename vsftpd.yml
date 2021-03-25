@@ -5,7 +5,7 @@
     - name: Install vsftpd server
       yum: name=vsftpd state=latest
       notify:
-        - restart vsftpd
+      - restart vsftpd
 handlers:
     - name: restart vsftpd
       service: name=vsftpd state=restarted
