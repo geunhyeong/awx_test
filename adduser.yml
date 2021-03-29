@@ -1,13 +1,21 @@
 ---
 - name: add-user-test
   hosts: all
-  vars:
-    - new_userid: awxtest
+  become: true
   tasks:
-  - name: check exist users
-    shell: cat /etc/passwd | grep {{ new_userid }} || echo "NULL"
-    register: rval
- 
-  - name: adduser
-    shell: /usr/sbin/useradd {{ new_userid }}
-    when: rval.stdout =='NULL'
+    - name: Add User
+      user:
+        name: "{{ USER_NAME }}"
+    - name: Add Password
+      user:
+        name: "{{ USER_NAME }}"
+        password: "{{ PASSWORD | password_hash('sha512') }}"
+    - name: Add to sudoers.d
+      copy:
+        content: |
+          %{{USER_NAME}} ALL=(ALL) NOPASSWD: ALL
+        dest: "/etc/sudoers.d/{{USER_NAME}}"
+        owner: root
+        group: root
+        mode: 0440
+        validate: "/usr/sbin/visudo -c -f '%s'"
