@@ -1,0 +1,18 @@
+---
+# vars file for wordpress
+nginx:
+    processor_count: 30
+    max_worker_connection: 512
+    log_dir: /var/log/nginx
+    access_log_name: access.log
+    port: 80
+
+mysql:
+    user_db_name: wordpress
+    user: wordpress
+    user_password: Word4370!
+
+wp:
+    downloadpath: /usr/local/src
+    filename: wordpress-latest.zip
+    installpath: /usr/share/nginx
