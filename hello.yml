@@ -1,6 +1,6 @@
 ---
 - name: Hello
-  hosts: all
+  hosts: 10.4.104.87
   tasks:
   - name: Hello
     shell: echo "Hello!"
