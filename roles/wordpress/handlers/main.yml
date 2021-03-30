@@ -1,0 +1,9 @@
+---
+# handlers file for wordpress
+- name: start nginx web server
+  action: service name=nginx state=started
+- name: restart nginx web server
+  action: service name=nginx state=restarted
+
+- name: restart php
+  action: service name=php-fpm state=restarted

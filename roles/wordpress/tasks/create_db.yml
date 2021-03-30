@@ -1,0 +1,26 @@
+---
+  - name: start mysql server
+    action: service name=mysqld state=started enabled=true
+
+  - name: create a new db
+    mysql_db:
+        login_user: root
+        login_password: "{{ mysql.root_password }}"
+        name: "{{ mysql.user_db_name }}"
+        collation: "{{ mysql.collation }}"
+        encoding: "{{ mysql.encoding }}"
+        state: present
+    vars:
+        ansible_python_interpreter: /usr/bin/python3.6
+
+  - name: create a new user
+    mysql_user:
+        login_user: root
+        login_password: "{{ mysql.root_password }}"
+        name: "{{ mysql.user }}"
+        password: "{{ mysql.user_password }}"
+        priv: "{{ mysql.user_db_name }}.*:ALL,GRANT"
+        host: "%"
+        state: present
+    vars:
+        ansible_python_interpreter: /usr/bin/python3.6
