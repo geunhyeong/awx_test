@@ -6,6 +6,7 @@
   tasks:
       - include: tasks/nginx_install.yml
       - include: tasks/php_install.yml
+      - include: tasks/create_db.yml
       - include: tasks/wordpress_install.yml
   handlers:
       - include: handlers/main.yml

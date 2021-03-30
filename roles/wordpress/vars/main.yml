@@ -8,8 +8,13 @@ nginx:
     port: 80
 
 mysql:
-    user_db_name: wordpress
-    user: wordpress
+    collation: utf8mb4_unicode_ci
+    encoding: utf8mb4
+    bind_address: 10.4.104.87
+    max_connections: 200
+    root_password: Gabia4370!
+    user_db_name: wordpress2
+    user: wordpress2
     user_password: Word4370!
 
 wp:

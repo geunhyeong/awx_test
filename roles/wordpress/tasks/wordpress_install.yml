@@ -29,3 +29,4 @@
        - { find: 'database_name_here', replace: '{{ mysql.user_db_name }}' }
        - { find: 'username_here', replace: '{{ mysql.user }}' }
        - { find: 'password_here', replace: '{{ mysql.user_password }}' }
+       - { find: 'localhost', replace: '10.4.104.87' }
